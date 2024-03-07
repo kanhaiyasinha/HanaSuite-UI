@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        #data-table {
+            padding-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        #data-table-container {
+            max-width: 800px; /* Adjust as needed */
+            /* margin: auto; */
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+            font-size: 12px; /* Reduce font size */
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 6px; /* Reduce padding */
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e2e6ea;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Parameter Analysis</h1> -->
+    <!-- Display the data table -->
+    <div id="data-table">
+        <button>close</button>
+        {{ data|safe }}
+    </div>
+</body>
+
+</html>
