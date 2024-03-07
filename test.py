@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('finalDashBoard.html')
+    return render_template('finalDashBoard1.html')
 
-@app.route('/parameter')
-def parameter():
+@app.route('/system_info')
+def system_info():
     # Read the Excel file into a Pandas DataFrame
     path = os.getcwd()
     excel_file = os.path.join(path, 'system_overview.xlsx')  # Replace 'your_excel_file.xlsx' with your actual file path

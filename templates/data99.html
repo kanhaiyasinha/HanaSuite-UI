@@ -7,14 +7,19 @@
     <style>
 
         #data-table {
-            padding-top: 5%;
+            /* padding-top: 5%;
             margin-left: 5%;
-            margin-right: 5%;
+            margin-right: 5%; */
+            /* width: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0; */
         }
 
         #data-table-container {
             max-width: 800px; /* Adjust as needed */
-            /* margin: auto; */
+            margin: auto;
             overflow-x: auto;
         }
 
@@ -53,7 +58,6 @@
     <!-- <h1>Parameter Analysis</h1> -->
     <!-- Display the data table -->
     <div id="data-table">
-        <button>close</button>
         {{ data|safe }}
     </div>
 </body>
