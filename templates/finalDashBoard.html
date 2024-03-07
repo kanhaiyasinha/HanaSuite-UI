@@ -1339,12 +1339,17 @@ Right Side
             document.getElementById("system-modal").style.display = "none";
         });
 
-        let parameterVisible = false;
+        
 
         async function toggleParameter() {
             try {
+
+                let parameterVisible = false;
                 const parameterContent = document.getElementById("parameter-content");
                 const systemModal = document.getElementById("system-modal");
+
+                console.log('opening')
+
                 if (parameterVisible) {
                     // Hide the parameter content and modal
                     systemModal.style.display = "none";
