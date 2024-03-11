@@ -618,24 +618,33 @@ Right Side
       transition: all 0.4s;
       visibility: hidden;
       opacity: 0;
-      background-color: rgb(255 255 255 / 90%);
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     /* Modal Content */
     .content {
       box-shadow: 0 13px 20px rgb(0 0 0);
       position: absolute;
-      background: #D3D3D3;
+      background: #fff;
       width: 400px;
       padding: 1em 2em;
       border-radius: 20px;
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      opacity: 0;
+      transform: translateY(-50px);
     }
 
     /* Show modal */
     .modal:target {
       visibility: visible;
       opacity: 1;
+    }
+    /* Slide in animation for modal content */
+    .content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Close button */
