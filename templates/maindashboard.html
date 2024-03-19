@@ -1,102 +1,1195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Form with Loading Animation</title>
-<style>
-  /* Style for the loading animation */
-  .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 32px;
-    display: none;
-  }
-  
-  .bar {
-    position: absolute;
-    width: 16px;
-    bottom: 0;
-    background: #076fe5;
-    animation: equalizer-animation 1.2s infinite ease-in-out;
-  }
-  
-  .bar:nth-child(1) { left: 0; animation-delay: 0.2s; }
-  .bar:nth-child(2) { left: 20px; animation-delay: 0.4s; }
-  .bar:nth-child(3) { left: 40px; animation-delay: 0.6s; }
-  .bar:nth-child(4) { left: 60px; animation-delay: 0.8s; }
-  
-  @keyframes equalizer-animation {
-    0%, 100% {
-      height: 0;
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX</title>
+  <link rel="stylesheet"
+    href=https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0 />
+  <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css>
+  <script src=https://cdn.jsdelivr.net/npm/flatpickr></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
+
+    .Logout,
+    .Cancel {
+      align-items: center;
+      appearance: none;
+      background-color: #fff;
+      border-radius: 24px;
+      border-style: none;
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+      box-sizing: border-box;
+      color: #3c4043;
+      cursor: pointer;
+      display: inline-flex;
+      fill: currentcolor;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: 48px;
+      justify-content: center;
+      letter-spacing: .25px;
+      line-height: normal;
+      max-width: 100%;
+      overflow: visible;
+      padding: 2px 24px;
+      position: relative;
+      text-transform: none;
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: 115px;
+      will-change: transform, opacity;
+      z-index: 0;
     }
-    50% {
-      height: 32px;
+
+    .Logout {
+      left: 10%;
     }
-  }
-</style>
+
+    .Cancel {
+      left: 30%;
+      justify-content: space-around;
+      width: auto;
+    }
+
+    .Logout:hover,
+    .Cancel:hover {
+      background: #F6F9FE;
+      color: #174ea6;
+    }
+
+    .Logout:active,
+    .Cancel:active {
+      box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+      outline: none;
+    }
+
+    .Logout:focus,
+    .Cancel:focus {
+      outline: none;
+      border: 2px solid #4285f4;
+    }
+
+    .Logout:not(:disabled),
+    .Cancel:not(:disabled) {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .Logout:not(:disabled):hover,
+    .Cancel:not(:disabled):hover {
+      box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+    }
+
+    .Logout:not(:disabled):focus,
+    .Cancel:not(:disabled):focus {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .Logout:not(:disabled):active,
+    .Cancel:not(:disabled):active {
+      box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+    }
+
+    .Logout:disabled,
+    .Cancel:disabled {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    /* variables */
+
+
+    :root {
+      --clr-primary: #7380ec;
+      --clr-danger: #ff7782;
+      --clr-success: #41f1b6;
+      --clr-white: #fff;
+      --clr-info-dark: #7d8da1;
+      --clr-info-light: #dce1eb;
+      --clr-dark: #363949;
+      --clr-warnig: #ff4edc;
+      --clr-light: rgba(132, 139, 200, 0.18);
+      --clr-primary-variant: #111e88;
+      --clr-dark-variant: #677483;
+      --clr-color-background: #f6f6f9;
+
+      --card-border-radius: 2rem;
+      --border-radius-1: 0.4rem;
+      --border-radius-2: 0.8rem;
+      --border-radius-3: 1.2rem;
+
+      --card-padding: 1.8rem;
+      --padding-1: 1.2rem;
+      --box-shadow: 0 2rem 3rem var(--clr-light);
+
+    }
+
+    /* dark theme */
+    .dark-theme-variables {
+      --clr-color-background: #181a1e;
+      --clr-white: #202528;
+      --clr-light: rgba(0, 0, 0, 0.4);
+      --clr-dark: #edeffd;
+      --clr-dark-variant: #677483;
+      --box-shadow: 0 2rem 3rem var(--clr-light)
+    }
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border: 0;
+      text-decoration: none;
+      list-style: none;
+      appearance: none;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      font-size: .7rem;
+      user-select: none;
+      overflow-x: hidden;
+      /* background: var(--clr-color-background); */
+      background: #F6F5F5;
+      font-family: 'Poppins', sans-serif;
+    }
+
+
+
+    .container {
+      display: grid;
+      width: 98%;
+      gap: 1.8rem;
+      grid-template-columns: 14rem auto 16rem;
+      margin: 0 auto;
+    }
+
+    a {
+      color: var(--clr-dark);
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    h6 {
+      font-size: 1.2rem;
+    }
+
+    form {
+      font-size: 13px;
+    }
+
+    h4 {
+      font-weight: 0.8rem;
+    }
+
+    h5 {
+      font-size: 0.77rem;
+    }
+
+    small {
+      font-size: 0.75rem;
+    }
+
+    .profile-photo img {
+
+
+      height: 50px;
+      overflow: hidden;
+
+      /*width: 2.8rem;
+  height: 2.8 rem;
+  overflow: hidden;
+  border-radius: 50%;*/
+    }
+
+    .text-muted {
+      color: var(--clr-info-dark);
+    }
+
+    p {
+      color: var(--clr-dark-variant);
+    }
+
+    b {
+      color: var(--clr-dark);
+    }
+
+    .primary {
+      color: var(--clr-primary);
+    }
+
+    .success {
+      color: var(--clr-success);
+    }
+
+    .danger {
+      color: #c72072;
+    }
+
+    .warning {
+      color: var(--clr-warnig);
+    }
+
+
+    /* aside */
+    aside {
+      height: 100vh;
+    }
+
+    aside .top {
+      background: var(--clr-light-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.4rem;
+    }
+
+    aside .logo {
+      display: flex;
+      gap: 1rem;
+    }
+
+    aside .logo img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    aside .top div.close span {
+      display: none;
+    }
+
+    /* ===================
+Sidebar
+================== */
+
+    aside .sidebar {
+      background: #212121;
+      display: flex;
+      flex-direction: column;
+      height: 86vh;
+      position: relative;
+      top: 1rem;
+
+    }
+
+    aside h3 {
+      font-weight: 500;
+    }
+
+    aside .sidebar a {
+
+      display: flex;
+      color: var(--clr-info-dark);
+      margin-left: 2rem;
+      gap: 1rem;
+      align-items: center;
+      height: 3.3rem;
+      transition: all .1s ease;
+
+    }
+
+    aside .sidebar a span {
+      font-size: 1.6rem;
+      transition: all .3s ease-in-out;
+
+    }
+
+    aside .sidebar a:last-child {
+      position: absolute;
+      bottom: 1rem;
+      width: 86%;
+    }
+
+    aside .sidebar a.active {
+      background-color: #006064;
+      color: var(--clr-primary);
+      margin-left: 0;
+      border-left: 5px solid var(--clr-primary);
+      margin-left: calc(1rem - 3px);
+    }
+
+    aside .sidebar a:hover span {
+      margin-left: 1rem;
+    }
+
+    aside .sidebar a span.msg_count {
+      background-color: var(--clr-danger);
+      color: var(--clr-white);
+      padding: 2px 5px;
+      font-size: 11px;
+      border-radius: var(--border-radius-1);
+    }
+
+    .sidebar a:hover {
+      background-color: #a44a8e;
+      color: #ffffff;
+    }
+
+
+    /* ----------------------------
+--------- Main--------------
+------------------------------ */
+
+    /* Header Section Styles */
+    main .header-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      /* Adjust the gap as needed */
+      margin-top: 10px;
+      /* Adjust the margin as needed */
+    }
+
+    /* Style for H2 Tags */
+    main h2 {
+      color: var(--clr-dark);
+      /* Use the same color as h1 */
+      border-bottom: 2px solid var(--clr-primary);
+      /* Use the same color as h1 */
+    }
+
+    main {
+      margin-top: 1.4rem;
+      width: auto;
+    }
+
+    main input {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      color: var(--clr-dark);
+    }
+
+    main .date {
+      display: inline-block;
+      background: var(--clr-white);
+      border-radius: var(--border-radius-1);
+      margin-top: 1rem;
+      padding: 0.5rem 1.6rem;
+    }
+
+    main .insights {
+      display: grid;
+      height: 30%;
+      /* grid-template-columns: 50% 50% 50% 50%; */
+      /* grid-template-columns: repeat(4, 1fr); */
+      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      width: 125%;
+      cursor: pointer;
+    }
+
+    main .insights>div {
+      /* background-color: var(--clr-white); */
+      background-color: #fff;
+      padding: var(--card-padding);
+      border-radius: var(--card-border-radius);
+      margin-top: 1rem;
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    main .insights>div:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      background-color: var(--clr-light-hover);
+      transform: translateY(-8px);
+    }
+
+    main .insights>div span {
+      background: coral;
+      padding: 0.5rem;
+      border-radius: 80%;
+      color: var(--clr-white);
+      font-size: 2rem;
+    }
+
+    main .insights>div.expenses span {
+      background: var(--clr-danger);
+    }
+
+    main .insights>div.income span {
+      background: var(--clr-success);
+    }
+
+    main .insights>div .middle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    main .insights>div .middle h1 {
+      font-size: 1.9rem;
+    }
+
+    main h1,
+    main .insights h1,
+    main .insights h3,
+    main .insights p {
+      color: var(--clr-dark);
+    }
+
+    main .insights .progress {
+      position: relative;
+      height: 68px;
+      width: 68px;
+      border-radius: 50px;
+    }
+
+    main .insights svg {
+      height: 150px;
+      width: 150px;
+      position: absolute;
+      top: 0;
+    }
+
+    main .insights svg circle {
+      fill: none;
+      stroke: var(--clr-primary);
+      transform: rotate(270, 80, 80);
+      stroke-width: 5;
+    }
+
+    main .insights .sales svg circle,
+    main .insights .expenses svg circle,
+    main .insights .income svg circle {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 150;
+    }
+
+    main .insights .expenses svg circle {
+      stroke-dashoffset: 10;
+    }
+
+    main .insights .income svg circle {
+      stroke: var(--clr-success);
+    }
+
+    main .insights .progress .number {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+
+    /*********************
+Right Side
+**********************/
+
+    .right {
+      margin-top: 1.4rem;
+    }
+
+    .right h2 {
+      color: var(--clr-dark);
+    }
+
+    .right .top {
+      display: flex;
+      justify-content: start;
+      gap: 2rem;
+    }
+
+    .right .top button {
+      display: none;
+    }
+
+    .right .theme-toggler {
+      background: var(--clr-white);
+      display: flex;
+      justify-content: space-between;
+      height: 1.6rem;
+      width: 4.2rem;
+      cursor: pointer;
+      border-radius: var(--border-radius-1);
+    }
+
+    .right .theme-toggler span {
+      font-size: 1.2rem;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right .theme-toggler span.active {
+      background: var(--clr-primary);
+      color: #fff;
+    }
+
+
+    .right .top .profile {
+      display: flex;
+      gap: 2rem;
+      text-align: right;
+    }
+
+    .right .info h3 {
+      color: var(--clr-dark);
+    }
+
+    .right .item h3 {
+      color: var(--clr-dark);
+    }
+
+
+
+
+
+    /* **********8
+MEDIA QUERY
+****************/
+
+    @media screen and (max-width:1200px) {
+      .container {
+        width: 94%;
+        grid-template-columns: 7rem auto 14rem;
+      }
+
+      aside .sidebar h3 {
+        display: none;
+      }
+
+      aside .sidebar a {
+        width: 5.6rem;
+      }
+
+      aside .sidebar a:last-child {
+        position: relative;
+        margin-top: 1.8rem;
+      }
+
+      main .insights {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    /* ****************
+MEDIA QUERY PHONE
+************************/
+
+    .modal {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: all 0.4s;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      box-shadow: 0 13px 20px rgb(0 0 0);
+      position: absolute;
+      background: #fff;
+      width: 400px;
+      padding: 1em 2em;
+      border-radius: 20px;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+
+    .modal:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Slide in animation for modal content */
+    .content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Input Field Styling */
+    input[type="text"],
+    input[type="password"] {
+      background-color: #e8f0fe;
+    }
+
+
+    .box-close {
+
+      position: absolute;
+      top: 0;
+      right: 15px;
+      color: #ff0000da;
+      text-decoration: none;
+      font-size: 30px;
+    }
+
+    @media screen and (max-width:768px) {
+      .container {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+
+      }
+
+      aside {
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        height: 100vh;
+        background-color: var(--clr-white);
+        display: none;
+        left: -110px;
+        animation: menuLeft .3s ease forwards;
+      }
+
+      @keyframes menuLeft {
+        to {
+          left: 0;
+        }
+      }
+
+
+
+
+      aside .logo h2 {
+        display: inline;
+      }
+
+      aside .sidebar h3 {
+        display: inline;
+      }
+
+      aside .sidebar a {
+        width: 100%;
+        height: 3.4rem;
+      }
+
+      aside .top div.close span {
+        display: inline;
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+        font-size: 35px;
+        cursor: pointer;
+      }
+
+      .right .top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.8rem;
+        background: var(--clr-white);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--clr-light);
+        margin: 0;
+      }
+
+
+      main .insights {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.6rem;
+        padding: 40px;
+      }
+
+      main .recent_order {
+        padding: 30px;
+        margin: 0 auto;
+      }
+
+
+
+      .right .profile {
+        position: absolute;
+        left: 70%;
+      }
+
+      .right .top .theme-toggler {
+        width: 4.4rem;
+        position: absolute;
+        left: 50%;
+      }
+
+      .right .profile .info {
+        display: none;
+      }
+
+      .right .top button {
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--clr-dark);
+        position: absolute;
+        left: 1rem;
+
+      }
+
+      .right .recent_order {
+        padding: 0 30px;
+      }
+
+      .right .recent_updates {
+        padding: 0 40px;
+      }
+
+      .right .sales-analytics {
+        padding: 0 40px;
+      }
+
+      .right .add_product {
+        padding: 0 40px;
+        margin-bottom: 40px;
+      }
+
+
+    }
+
+    .next-button {
+      width: 133px;
+      left: 30%;
+      align-items: center;
+      appearance: none;
+      background-color: #fff;
+      border-radius: 24px;
+      border-style: none;
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+      box-sizing: border-box;
+      color: #3c4043;
+      cursor: pointer;
+      display: inline-flex;
+      fill: currentcolor;
+      font-size: 14px;
+      font-weight: 500;
+      height: 48px;
+      letter-spacing: .25px;
+      line-height: normal;
+      max-width: 100%;
+      overflow: visible;
+      padding: 2px 24px;
+      position: relative;
+      text-align: center;
+      text-transform: none;
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: auto;
+      will-change: transform, opacity;
+      z-index: 0;
+    }
+
+    .next-button:hover {
+      background: #F6F9FE;
+      color: #174ea6;
+    }
+
+    .next-button:active {
+      box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+      outline: none;
+    }
+
+    .next-button:focus {
+      outline: none;
+      border: 2px solid #4285f4;
+    }
+
+    .next-button:not(:disabled) {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .next-button:not(:disabled):hover {
+      box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+    }
+
+    .next-button:not(:disabled):focus {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .next-button:not(:disabled):active {
+      box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+    }
+
+    .next-button:disabled {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+      cursor: default;
+    }
+
+    label {
+      transition: transform 0.2s ease;
+    }
+
+    p {
+      font-weight: bolder;
+      text-align: center;
+      color: black;
+      font-size: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .side_bar {
+      margin-top: 15px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <aside>
+
+      <div class="top">
+        <div class="logo">
+          <h2><span class="danger">HANA-SUITE</span></h2>
+
+        </div>
+        <div class="close" id="close_btn">
+          <span class="material-symbols-sharp">
+            close
+          </span>
+        </div>
+      </div>
+      <!-- end top -->
+
+      <!-- aside bar -->
+      <div class="sidebar">
+
+        <div class="side_bar">
+
+          <a href="#" class="active">
+            <span class="material-symbols-sharp">Home </span>
+            <h3>Home</h3>
+          </a>
+
+
+          <a href="#">
+            <span class="material-symbols-sharp">visibility</span>
+            <h3>View Connection</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">person</span>
+            <h3>profile</h3>
+          </a>
 
 
 
-<form id="myForm">
-  <label for="fname">First Name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last Name:</label><br>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit">
-</form>
+          <a href="#">
+            <span class="material-symbols-sharp">settings </span>
+            <h3>settings</h3>
+          </a>
+          <a href="#popup-box3">
+            <span class="material-symbols-sharp">add </span>
+            <h3>Add Connection</h3>
+          </a>
+          <a href="#popup-box">
+            <span class="material-symbols-sharp">logout </span>
+            <h3>logout</h3>
+          </a>
 
-<!-- Loading Animation -->
-<div class="loader" id="loader">
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-</div>
+        </div>
+      </div>
 
-<!-- Success Message -->
-<div id="successMessage" style="display: none;">
-  Form submitted successfully!
-</div>
+    </aside>
+
+    <main>
+
+      <div class="header-section" onclick="location.href='/Main_Dashboard';">
+        <h1>Home</h1>
+        <h2 id="currentSID"></h2>
+        <h2 id="currentDate"></h2>
+      </div>
+      <div class="insights">
+
+        <!-- start seling -->
+        <div>
+          <a href="#popup-box1">
+            <div class="sales">
+              <span class="material-symbols-sharp">database</span>
+              <!--<img src="./Mem.png" alt=""/>-->
+              <div class="middle">
+                <div class="left">
+                  <h3> </h3>
+                  <h6>Live Performance</h6>
+                  <!--<h1>$25,024</h1>-->
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- end seling -->
+
+        <!-- start expenses -->
+        <div class="expenses">
+          <span class="material-symbols-sharp">History</span>
+          <div class="middle">
+            <div class="left">
+              <h6>Historical Analysis</h6>
+            </div>
+          </div>
+        </div>
+        <!-- end seling -->
+
+        <!-- start seling -->
+        <div>
+          <a href="#popup-box1">
+            <div class="sales">
+              <span class="material-symbols-sharp">database</span>
+              <!--<img src="./Mem.png" alt=""/>-->
+              <div class="middle">
+                <div class="left">
+                  <h3> </h3>
+                  <h6>HANA KPI</h6>
+                  <!--<h1>$25,024</h1>-->
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- end seling -->
+
+        <!-- start expenses -->
+        <div class="expenses">
+          <span class="material-symbols-sharp">History</span>
+          <div class="middle">
+            <div class="left">
+              <h6>Top Growing Table</h6>
+            </div>
+          </div>
+        </div>
+        <!-- end seling -->
 
 
-<script>
-// Get the form and loader elements
-var form = document.getElementById("myForm");
-var loader = document.getElementById("loader");
+        <!-- Hidden input and associated label -->
+        <label for="dateInput" id="dateLabel" style="display: none;">Select Date</label>
+        <input type="date" id="dateInput" style="display: none;">
 
-// Add submit event listener to the form
-form.addEventListener("submit", function(event) {
-  // Prevent the default form submission behavior
-  event.preventDefault();
-  
-  // Hide the form
-  form.style.display = "none";
-  
-  // Display the loader animation
-  loader.style.display = "block";
-  
-  // Simulate form submission delay (3 seconds in this example)
-  setTimeout(function() {
-    // You can perform actual form submission here
-    
-    // After submission, hide the loader
-    loader.style.display = "none";
-    // document.getElementById("successMessage").style.display = "block";
-    form.style.display = "none";
-    // Optionally, reset the form fields
-    form.reset();
-    
 
-    
-  }, 3000); // Change 3000 to desired milliseconds for the delay
-});
-</script>
 
+      </div>
+      <!-- end insights -->
+
+    </main>
+    <!------------------
+         end main
+        ------------------->
+
+    <!----------------
+        start right main
+      ---------------------->
+    <div class="right">
+
+      <div class="top">
+        <button id="menu_bar">
+          <span class="material-symbols-sharp">menu</span>
+        </button>
+
+        <div class="theme-toggler">
+          <span class="material-symbols-sharp active">light_mode</span>
+          <span class="material-symbols-sharp">dark_mode</span>
+        </div>
+        <div class="profile">
+          <!--<div class="info">
+           <p><b>Mphasis</b></p>
+           <p>Admin</p>
+           <small class="text-muted"></small>
+       </div>-->
+          <div class="profile-photo">
+            <img src="static/MP_N.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script>
+
+      const sideMenu = document.querySelector('aside');
+      const menuBtn = document.querySelector('#menu_bar');
+      const closeBtn = document.querySelector('#close_btn');
+
+      const themeToggler = document.querySelector('.theme-toggler');
+
+      document.getElementById('currentSID').textContent
+
+      menuBtn.addEventListener('click', () => {
+        sideMenu.style.display = "block"
+      })
+      closeBtn.addEventListener('click', () => {
+        sideMenu.style.display = "none"
+      })
+
+      themeToggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme-variables')
+        themeToggler.querySelector('span:nth-child(1').classList.toggle('active')
+        themeToggler.querySelector('span:nth-child(2').classList.toggle('active')
+      })
+
+      function getCurrentDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+
+      document.getElementById('currentDate').textContent = getCurrentDate();
+
+      // Initialize Flatpickr for the currentDate element
+      flatpickr('#currentDate', {
+        enableTime: false, // Set to true if you want to include time
+        dateFormat: 'Y-m-d',
+        onChange: function (selectedDates, dateStr) {
+          // Handle the selected date here if needed
+          console.log(dateStr);
+          //document.getElementById('currentDate').textContent = `Date = ${dateStr}`;
+          document.getElementById('currentDate').textContent = dateStr;
+        },
+      });
+
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+
+    <div id="popup-box3" class="modal">
+      <div class="content">
+        <p>DB CONNECTION DETAILS</p>
+        <form method="post" action="/submit">
+          <label for="hostname">Hostname</label>
+          <input type="text" id="hostname" name="hostname" required
+            placeholder="Example: dbhost.com OR 10.*.*.* OR localhost"><br>
+          <label for="port">Port</label>
+          <input type="text" id="port" name="port" pattern="[0-9]+" required maxlength="5"
+            placeholder="Example: For systemdb 3XX13 ,Tenant 3XX15 (XX = Instance Number)"><br>
+          <label for="port">Tenant SID</label>
+          <input type="text" id="SID" name="SID" required maxlength="3" placeholder="Example: SID,PEC"
+            oninput="updateSID(this.values)"><br>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required placeholder="Example: Chandrayaan-3"><br>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder=" Chandrayaan-3's password"><br><br>
+          <div class="button-group">
+            <div>
+              <a class="uil uil-signout" href="#">
+                <button class="Logout" type="button">Cancel</button>
+              </a>
+              <a href="#popup-box3">
+                <button type="submit" class="Cancel">Create</button>
+
+              </a>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div id="popup-box1" class="modal">
+    <div class="content">
+      <p>DB CONNECTION DETAILS</p>
+      <form method="post" action="/dashboard">
+        <label for="hostname">Hostname</label>
+        <input type="text" id="hostname" name="hostname" required
+          placeholder="Example: dbhost.com OR 10.*.*.* OR localhost"><br>
+        <label for="port">Port</label>
+        <input type="text" id="port" name="port" pattern="[0-9]+" required maxlength="5"
+          placeholder="Example: For systemdb 3XX13 ,Tenant 3XX15 (XX = Instance Number)"><br>
+        <label for="port">Tenant SID</label>
+        <input type="text" id="SID" name="SID" required maxlength="3" placeholder="Example: SID,PEC"><br>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required placeholder="Example: Chandrayaan-3"><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder=" Chandrayaan-3's password"><br><br>
+        <div class="button-group">
+          <div>
+            <a class="uil uil-signout" href="#">
+              <button class="Logout" type="button">Cancel</button>
+            </a>
+            <a href="#popup-box1">
+              <button type="submit" class="Cancel">Next</button>
+
+            </a>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  </div>
+
+
+  <div id="popup-box" class="modal">
+    <div class="content">
+
+      <br>
+      <b>
+        <p> Are You Sure Want To Logout?</p>
+      </b>
+      <br><br>
+      <div>
+        <a class="uil uil-signout" href="#popup-box">
+          <button class="Logout" type="button">Logout</button>
+
+        </a>
+        <a href="#">
+          <button class="Cancel" type="button">Cancel</button>
+        </a>
+      </div>
+
+
+    </div>
+  </div>
 </body>
+
 </html>
