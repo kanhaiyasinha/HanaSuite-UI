@@ -119,6 +119,7 @@
       --clr-dark-variant: #677483;
       --clr-color-background: #f6f6f9;
 
+
       --card-border-radius: 2rem;
       --border-radius-1: 0.4rem;
       --border-radius-2: 0.8rem;
@@ -158,8 +159,9 @@
       font-size: .7rem;
       user-select: none;
       overflow-x: hidden;
-      /* background: var(--clr-color-background); */
-      background: #F6F5F5;
+      background: var(--clr-color-background);
+      /* background: #d6edfd; */
+
       font-family: 'Poppins', sans-serif;
     }
 
@@ -206,17 +208,12 @@
       font-size: 0.75rem;
     }
 
-
-    .profile-photo {
-            display: flex;
-            align-items: right;
-            justify-content: right;
-    }
-
     .profile-photo img {
-      margin-right: 0%;
+
+
       height: 50px;
       overflow: hidden;
+
       /*width: 2.8rem;
   height: 2.8 rem;
   overflow: hidden;
@@ -284,7 +281,7 @@ Sidebar
 ================== */
 
     aside .sidebar {
-      background:#212121;
+      background: var(--clr-dark);
       display: flex;
       flex-direction: column;
       height: 86vh;
@@ -318,11 +315,11 @@ Sidebar
     aside .sidebar a:last-child {
       position: absolute;
       bottom: 1rem;
-      width: 85%;
+      width: 86%;
     }
 
     aside .sidebar a.active {
-      background-color:#006064;
+      background-color: var(--clr-light);
       color: var(--clr-primary);
       margin-left: 0;
       border-left: 5px solid var(--clr-primary);
@@ -342,9 +339,9 @@ Sidebar
     }
 
     .sidebar a:hover {
-    background-color: #a44a8e;
-    color: #ffffff;
-}
+      background-color: #a44a8e;
+      color: #ffffff;
+    }
 
 
 
@@ -401,13 +398,13 @@ Sidebar
 
     main .insights>div {
       /* background-color: var(--clr-white); */
-      background-color: #fff;
+      background-color: white;
       padding: var(--card-padding);
       border-radius: var(--card-border-radius);
       margin-top: 1rem;
       /* box-shadow: var(--box-shadow); */
       box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     main .insights>div:hover {
@@ -513,7 +510,7 @@ Right Side
 
     .right .top {
       display: flex;
-      justify-content: right;
+      justify-content: start;
       gap: 2rem;
     }
 
@@ -521,51 +518,63 @@ Right Side
       display: none;
     }
 
-    /* .right .theme-toggler {
-<!--      background: var(&#45;&#45;clr-white);-->
+    .right .theme-toggler {
+      background: var(--clr-white);
       display: flex;
-      justify-content: right;
+      justify-content: space-between;
       height: 1.6rem;
       width: 4.2rem;
       cursor: pointer;
       border-radius: var(--border-radius-1);
     }
 
+    .right .theme-toggler span {
+      font-size: 1.2rem;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right .theme-toggler span.active {
+      background: var(--clr-primary);
+      color: #fff;
+    }
+
     .right .top .profile {
       display: flex;
-<!--      gap: 2rem;-->
-      justify-content: right;
-    } */
+      gap: 2rem;
+      text-align: right;
+    }
+
     /* side button */
 
-        .side-btn {
-            display: flex;
-            align-items: right;
-            justify-content: right;
-        }
+    .side-btn {
+      display: flex;
+      align-items: center;
+    }
 
-        .side-btn button {
-            background-color: #87f2f4;
-            margin: 5%;
-            margin-right: 0%;
-            border: none;
-            color: white;
-            padding: 6px 12px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            outline: none;
-            /* Remove button outline on focus */
+    .side-btn button {
+      background-color: violet;
+      margin: 10%;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      outline: none;
+      /* Remove button outline on focus */
 
-        }
+    }
 
-        .side-btn button:hover {
-            background-color: #c72072;
-        }
-
+    .side-btn button:hover {
+      background-color: #c72072;
+    }
 
     .progress {
       position: relative;
@@ -588,11 +597,11 @@ Right Side
       font-size: 13px;
       /* Example font size */
       /*font-weight: bolder;*/
-      color: #fff;
+      color: gray;
       /* Example text color */
       padding: 5px 10px;
       /* Example padding */
-      background-color: #c72072;
+      background-color: #fff;
       /* Example background color */
       border-radius: 10px;
       /* Example border radius */
@@ -618,33 +627,24 @@ Right Side
       transition: all 0.4s;
       visibility: hidden;
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgb(255 255 255 / 90%);
     }
 
     /* Modal Content */
     .content {
       box-shadow: 0 13px 20px rgb(0 0 0);
       position: absolute;
-      background: #fff;
+      background: #D3D3D3;
       width: 400px;
       padding: 1em 2em;
       border-radius: 20px;
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-      opacity: 0;
-      transform: translateY(-50px);
     }
 
     /* Show modal */
     .modal:target {
       visibility: visible;
       opacity: 1;
-    }
-    /* Slide in animation for modal content */
-    .content {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* Close button */
@@ -839,6 +839,9 @@ Right Side
       // r: 40; /* New value for the radius when hovering */
     }
 
+
+
+
     .system-modal {
           align-items: center;
           justify-content: center;
@@ -891,7 +894,6 @@ Right Side
           overflow-y: auto;
           /* Enable vertical scrolling if content exceeds height */
       }
-
   </style>
 </head>
 
@@ -1012,12 +1014,13 @@ Right Side
             </div>
             <div class="progress">
               <svg width="100" height="100">
-                <circle class="dynamic-circle" r="38" cy="40" cx="40.3"></circle>
+                <circle class="dynamic-circle" r="35" cy="40" cx="40"></circle>
               </svg>
               <div class="number">
-                <p>{{var_1}}%</p>
+                <p>{{var}}%</p>
               </div>
-              <div class="hover-text" > Used memory: {{var_1}}% and Free memory: {{100 - var_1}}%</div>
+              <div class="hover-text">Used memory :{{var}}% <br>
+                Free memory : {{var_2}} %</div>
             </div>
 
           </div>
@@ -1037,7 +1040,7 @@ Right Side
                 <circle r="35" cy="40" cx="40"></circle>
               </svg>
               <div class="number">
-                <p>{{var_2}}%</p>
+                <p>{{var}}%</p>
               </div>
               <div class="hover-text">Hence,it is test data, so nothing to display here let it be</div>
             </div>
@@ -1060,9 +1063,9 @@ Right Side
                 <circle r="35" cy="40" cx="40"></circle>
               </svg>
               <div class="number">
-                <p>{{var_2}}%</p>
+                <p>80%</p>
               </div>
-              <div class="hover-text">Used CPU Usage: {{var_2}}% and Free CPU: {{100 - var_2}}%</div>
+              <div class="hover-text">Hence,it is test data, so nothing to display here</div>
             </div>
 
           </div>
@@ -1085,7 +1088,8 @@ Right Side
               <div class="number">
                 <p>70%</p>
               </div>
-              <div class="hover-text">Hence,it is test data, so nothing to display here and let it be</div>
+              <div class="hover-text">Hence,it is test data, so nothing to display here and let it be
+              </div>
             </div>
           </div>
           <small>Last 1 Hours</small>
@@ -1122,29 +1126,29 @@ Right Side
                 <circle r="35" cy="40" cx="40"></circle>
               </svg>
               <div class="number" onclick="location.href='/high_alert';">
-                <p>{{var_3}}</p>
+                <p>80%</p>
               </div>
-              <div class="hover-text">{{SID}} system we found {{var_3}} High Alerts</div>
+              <div class="hover-text">Hence,it is test data, so nothing to display here</div>
             </div>
           </div>
           <small>Last 1 Hours</small>
         </div>
         <!-- Inside your HTML body -->
 
-        <div class="sales" id="salesDiv" onclick="location.href='/network';">
-          <span class="material-symbols-sharp" onclick="location.href='/network';" >online_prediction</span>
-          <div class="middle" onclick="location.href='/network';">
-            <div class="left" onclick="location.href='/network';">
+        <div class="sales" id="salesDiv">
+          <span class="material-symbols-sharp">online_prediction</span>
+          <div class="middle">
+            <div class="left">
               <h3>Network</h3>
             </div>
-            <div class="progress" onclick="location.href='/network';">
+            <div class="progress">
               <svg>
                 <circle r="35" cy="40" cx="40"></circle>
               </svg>
-              <div class="number" onclick="location.href='/network';">
-                <p>{{var_4}}</p>
+              <div class="number">
+                <p>75%</p>
               </div>
-              <div class="hover-text">We Have Found {{var_4}} Replication status Disabled </div>
+              <div class="hover-text">Hence,it is test data, so nothing to display here</div>
             </div>
           </div>
           <small>Last 1 Hours</small>
@@ -1152,10 +1156,10 @@ Right Side
         </div>
         <!-- Inside your HTML body -->
         <div class="sales" id="salesDiv">
-          <span class="material-symbols-sharp">info</span>
+          <span class="material-symbols-sharp">online_prediction</span>
           <div class="middle">
             <div class="left">
-              <h3>TOP GROWING TABLE</h3>
+              <h3>HANA KPI</h3>
             </div>
             <div class="progress">
               <svg>
@@ -1198,31 +1202,28 @@ Right Side
           <span class="material-symbols-sharp">menu</span>
         </button>
 
+        <div class="theme-toggler">
+          <span class="material-symbols-sharp active">light_mode</span>
+          <span class="material-symbols-sharp">dark_mode</span>
+        </div>
         <div class="profile">
           <!--<div class="info">
            <p><b>Mphasis</b></p>
            <p>Admin</p>
            <small class="text-muted"></small>
        </div>-->
-          <div class="theme-toggler" onclick="location.href='/system_info';">
-          <button type="button" class="btn btn-primary" onclick="location.href='/system_info';">System Info</button>
-        </div>
           <div class="profile-photo">
             <img src="static/MP_N.png" alt="" />
           </div>
-
         </div>
-
       </div>
       <!-- side button -->
-            <div class="side-btn">
+      <div class="side-btn">
 
-                <button type="button" class="btn btn-primary" onclick="toggleParameter()">System Info</button>
+        <button type="button" class="btn btn-primary" onclick="toggleParameter()">System Info</button>
 
-            </div>
-            
+      </div>
     </div>
-    
 
 
     <script>
@@ -1271,8 +1272,24 @@ Right Side
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
       }
 
+      document.getElementById('memoryPercent').textContent = memoryFunc();
+
+      function memoryFunc() {
+
+      }
 
 
+      // Get the SVG circle element
+      const circle = document.getElementById('dynamic-circle');
+
+      // Set the percentage value (0 to 100)
+      const percentage = 50;
+
+      // Calculate the radius based on the percentage
+      const radius = (percentage / 100) * 50; // Assuming the maximum radius is 50 (half of the SVG width/height)
+
+      // Set the radius of the circle
+      circle.setAttribute('r', radius);
 
 
 
@@ -1316,48 +1333,47 @@ Right Side
       <button id="close-modal-btn">X</button>
       <div id="parameter-content"></div>
     </div>
-  
-    
+
+
     <script>
 
-        document.getElementById("close-modal-btn").addEventListener("click", function() {
-            console.log('closing')
-            document.getElementById("system-modal").style.display = "none";
-        });
+      document.getElementById("close-modal-btn").addEventListener("click", function () {
+        console.log('closing')
+        document.getElementById("system-modal").style.display = "none";
+      });
 
-        
 
-        async function toggleParameter() {
-            try {
 
-                let parameterVisible = false;
-                const parameterContent = document.getElementById("parameter-content");
-                const systemModal = document.getElementById("system-modal");
+      async function toggleParameter() {
+        try {
 
-                console.log('opening')
+          let parameterVisible = false;
+          const parameterContent = document.getElementById("parameter-content");
+          const systemModal = document.getElementById("system-modal");
 
-                if (parameterVisible) {
-                    // Hide the parameter content and modal
-                    systemModal.style.display = "none";
-                    parameterVisible = false;
-                } else {
-                    // Show the parameter content and modal
-                    const response = await fetch('/system_info');
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    const data = await response.text();
-                    parameterContent.innerHTML = data;
-                    systemModal.style.display = "block";
-                    parameterVisible = true;
-                }
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+          console.log('opening')
+
+          if (parameterVisible) {
+            // Hide the parameter content and modal
+            systemModal.style.display = "none";
+            parameterVisible = false;
+          } else {
+            // Show the parameter content and modal
+            const response = await fetch('/parameter');
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
             }
+            const data = await response.text();
+            parameterContent.innerHTML = data;
+            systemModal.style.display = "block";
+            parameterVisible = true;
+          }
+        } catch (error) {
+          console.error('There was a problem with the fetch operation:', error);
         }
+      }
 
     </script>
-
 
     <!-- parameter form -->
 
@@ -1389,7 +1405,7 @@ Right Side
                 <button class="Logout" type="button">Cancel</button>
               </a>
               <a href="#popup-box2">
-                <button type="submit" class="Cancel" onclick="location.href='/parameter';">connect</button>
+                <button type="submit" class="Cancel">connect</button>
 
               </a>
             </div>
@@ -1412,8 +1428,6 @@ Right Side
           .catch(error => console.error('Error:', error));
       }
     </script>
-
-
   </div>
 
 
@@ -1429,7 +1443,7 @@ Right Side
       <br><br>
       <div>
         <a class="uil uil-signout" href="#popup-box">
-          <button class="Logout" onclick="location.href='/';" type="button">Logout</button>
+          <button class="Logout" type="button">Logout</button>
 
         </a>
         <a href="#">
